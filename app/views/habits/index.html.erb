@@ -1,8 +1,6 @@
 <h1>Habits#index</h1>
   <div class='row'>
       <div class="col-md-4">
-      </div>
-      <div class="col-md-4">
         <% @habits.each do |habit| %>
         <p>
           <strong>Habit</strong>
@@ -30,19 +28,21 @@
                 <%= "months." %>
               <% end %>
           </p>
-          <h4>Journal</h4>
-          <% habit.journals.each do |journal| %>
-            <p>
-              <strong>Journal:</strong>
-              <%= journal.body %>
-            </p>
-          <% end %>
-          <h4>Update Journal</h4>
-            <p><%= render partial: "journals/form", locals: {habit: habit} %></p>
-            <p><%= link_to 'Delete', habit_path(habit), class:"btn btn-danger",
-            method: :delete, data: { confirm: "Are you sure?" } %></p>
-          <% end %>
         </div>
+          <div class="col-md-4">
+            <h4>Journal</h4>
+            <% habit.journals.each do |journal| %>
+              <p>
+                <strong>Journal:</strong>
+                <%= journal.body %>
+              </p>
+            <% end %>
+            <h4>Update Journal</h4>
+              <p><%= render partial: "journals/form", locals: {habit: habit} %></p>
+              <p><%= link_to 'Delete', habit_path(habit), class:"btn btn-danger",
+              method: :delete, data: { confirm: "Are you sure?" } %></p>
+            <% end %>
+          </div>
     <div class="col-md-4">
       <% @habits.each do |habit| %>
         <% if ((habit.journals.count.to_f / habit.duration.to_f) * 100).to_i < 100 %>
@@ -54,7 +54,7 @@
             </div>
           </div>
         <% else %>
-          <h3><i class="fa fa-check-square fa-lg"></i><%= habit.name %></h3>            
+          <h3><i class="fa fa-check-square fa-lg"></i><%= habit.name %></h3>
         <% end %>
       <% end %>
       </div>

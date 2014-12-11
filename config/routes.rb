@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  # root 'home#index'
+  root 'home#index'
 
-  root 'habits#index'
+  get 'habits/index' => 'habits#index'
   get 'habits/new' => "habits#new", as: :new_habit
   post 'habits' => 'habits#create'
 
