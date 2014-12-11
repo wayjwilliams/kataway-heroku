@@ -42,4 +42,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.1.0'
 gem 'simple_form', '3.1.0.rc2'
 gem 'pry'
-gem 'rails_12factor'
+
+group :production do
+  gem 'rails_12factor'
+end
